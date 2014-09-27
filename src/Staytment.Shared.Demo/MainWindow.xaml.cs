@@ -3,26 +3,29 @@ using System.Diagnostics;
 using System.Windows;
 using Windows.Devices.Geolocation;
 using Staytment.Shared.Api;
+using Staytment.Shared.Demo.ViewModels;
 
 namespace Staytment.Shared.Demo
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    /// <summary>Interaction logic for MainWindow.xaml</summary>
     public partial class MainWindow : Window
     {
-        private const string apiKey = "<api-key>";
+        private const string ApiKey = "<api-key>";
+        private readonly MainViewModel _viewModel;
 
         public MainWindow()
         {
             InitializeComponent();
+            _viewModel = DataContext as MainViewModel;
             Init();
         }
 
         private async void Init()
         {
-            var cl = new StaytmentClient(apiKey);
+            var cl = new StaytmentClient(ApiKey);
             var nearbyPosts = await cl.GetPosts(new Geopoint(new GeoCoordinate()), 25000);
+
+            _viewModel.CurrentPosts = nearbyPosts;
 
             foreach (var post in nearbyPosts)
             {
