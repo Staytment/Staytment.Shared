@@ -3,5 +3,6 @@
     public class Post
     {
         // TODO: Implement
+        public string Content { get; private set; }
     }
 }
