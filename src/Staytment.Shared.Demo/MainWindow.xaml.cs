@@ -29,7 +29,7 @@ namespace Staytment.Shared.Demo
 
             foreach (var post in nearbyPosts)
             {
-                Trace.WriteLine(post.Content);
+                Trace.WriteLine(post.ToString());
             }
         }
     }
