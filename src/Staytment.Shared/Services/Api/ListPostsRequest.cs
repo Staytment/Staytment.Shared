@@ -26,8 +26,8 @@ namespace Staytment.Shared.Services.Api
 
         public Task<ListPostsResponse> GetResponse(Geopoint point, int maxDistance, int limit)
         {
-            //if (point == null)
-            //    throw new ArgumentNullException("point");
+            if (point == null)
+                throw new ArgumentNullException("point");
             if (maxDistance < 0)
                 throw new ArgumentException("maxDistance must be greater as or equal to 0");
 

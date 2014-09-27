@@ -5,8 +5,4 @@ namespace Staytment.Shared.Net
     {
         QueryString ToQueryString();
     }
-    //public interface IHttpContentable
-    //{
-    //    HttpContent ToHttpContent();
-    //}
 }

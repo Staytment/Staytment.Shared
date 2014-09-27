@@ -23,8 +23,8 @@ namespace Staytment.Shared.Services.Api
 
         public Task<CreatePostResponse> GetResponse(Geopoint position, string content)
         {
-            //if (position == null)
-            //    throw new ArgumentNullException("position");
+            if (position == null)
+                throw new ArgumentNullException("position");
             if (string.IsNullOrEmpty(content)) // TODO: Message.IsValidContent?
                 throw new ArgumentNullException("content");
 
@@ -46,7 +46,7 @@ namespace Staytment.Shared.Services.Api
 
             public CreatePostRequestData(Geopoint position, string content)
             {
-                //Debug.Assert(position != null);
+                Debug.Assert(position != null);
                 Debug.Assert(!string.IsNullOrEmpty(content)); // TODO: Message.IsValidContent?
 
                 message = content;
