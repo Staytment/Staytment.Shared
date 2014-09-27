@@ -1,4 +1,6 @@
-﻿using Staytment.Shared.Services;
+﻿using System.Windows.Input;
+using Staytment.Shared.Demo.Commands;
+using Staytment.Shared.Services;
 
 namespace Staytment.Shared.Demo.ViewModels
 {
@@ -17,6 +19,14 @@ namespace Staytment.Shared.Demo.ViewModels
                     OnPropertyChanged();
                 }
             }
+        }
+
+        public ICommand CreatePost { get; private set; }
+
+
+        public MainViewModel()
+        {
+            CreatePost = new CreatePostCommand();
         }
     }
 }

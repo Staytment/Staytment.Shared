@@ -6,18 +6,24 @@
     <Window.DataContext>
         <viewModels:MainViewModel />
     </Window.DataContext>
-    <Grid>
-        <!-- TODO: Download Bing Maps SDK and include the map here -->
-        <ListView ItemsSource="{Binding CurrentPosts}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Username}" />
-                        <TextBlock Text=": " />
-                        <TextBlock Text="{Binding Content}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+    <Grid Margin="10">
+        <DockPanel>
+            <Button Content="Create Post"
+                    Command="{Binding CreatePost}"
+                    DockPanel.Dock="Top" />
+
+            <!-- TODO: Download Bing Maps SDK and include the map here -->
+            <ListView ItemsSource="{Binding CurrentPosts}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Username}" />
+                            <TextBlock Text=": " />
+                            <TextBlock Text="{Binding Content}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </DockPanel>
     </Grid>
 </Window>

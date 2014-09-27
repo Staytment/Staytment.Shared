@@ -6,7 +6,7 @@ namespace Staytment.Shared.Demo.Commands
     {
         public override bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            return false; // TODO: Implement
         }
 
         public override void Execute(object parameter)
