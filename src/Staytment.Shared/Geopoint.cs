@@ -1,10 +1,7 @@
 ﻿#if PLATFORM_DESKTOP
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+// NOTE: DO NOT REMOVE
+// Used for easy cross-compilation
 
 using BasicGeoposition = System.Device.Location.GeoCoordinate;
 
