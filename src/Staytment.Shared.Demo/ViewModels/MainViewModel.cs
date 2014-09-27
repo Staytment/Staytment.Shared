@@ -1,4 +1,4 @@
-﻿using Staytment.Shared.Api;
+﻿using Staytment.Shared.Services;
 
 namespace Staytment.Shared.Demo.ViewModels
 {

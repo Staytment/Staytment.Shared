@@ -1,10 +1,10 @@
-﻿using Staytment.Shared.Net;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
+using Staytment.Shared.Net;
 
-namespace Staytment.Shared.Api
+namespace Staytment.Shared.Services.Api
 {
     public class ListPostsRequest : ApiRequest<ListPostsResponse>
     {

@@ -2,8 +2,8 @@
 using System.Diagnostics;
 using System.Windows;
 using Windows.Devices.Geolocation;
-using Staytment.Shared.Api;
 using Staytment.Shared.Demo.ViewModels;
+using Staytment.Shared.Services.Api;
 
 namespace Staytment.Shared.Demo
 {

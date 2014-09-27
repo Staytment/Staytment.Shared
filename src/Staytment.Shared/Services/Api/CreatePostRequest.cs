@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 
-namespace Staytment.Shared.Api
+namespace Staytment.Shared.Services.Api
 {
     // TODO: May refactor to inherit from "PostRequest" to only have the constant in one class
     // TODO: May rename classes to have HTTP options as prefix. Eg. "PostPostsRequest", "GetPostsRequest"

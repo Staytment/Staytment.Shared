@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 
-namespace Staytment.Shared.Api
+namespace Staytment.Shared.Services.Api
 {
     public class StaytmentClient
     {

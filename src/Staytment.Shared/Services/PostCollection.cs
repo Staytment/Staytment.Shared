@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace Staytment.Shared.Api
+namespace Staytment.Shared.Services
 {
     public class PostCollection : ObservableCollection<Post>
     { }

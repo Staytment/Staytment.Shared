@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
-using Staytment.Shared.Net;
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Staytment.Shared.Net;
 
-namespace Staytment.Shared.Api
+namespace Staytment.Shared.Services.Api
 {
     public abstract class ApiRequest<T> : IDisposable where T : class, IApiResponse
     {

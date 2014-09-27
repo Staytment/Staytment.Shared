@@ -46,21 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\ApiRequest.cs" />
-    <Compile Include="Api\CreatePostRequest.cs" />
-    <Compile Include="Api\CreatePostResponse.cs" />
-    <Compile Include="Api\IApiResponse.cs" />
-    <Compile Include="Api\ListPostsRequest.cs" />
-    <Compile Include="Api\ListPostsResponse.cs" />
-    <Compile Include="Api\Post.cs" />
-    <Compile Include="Api\PostCollection.cs" />
-    <Compile Include="Api\StaytmentClient.cs" />
-    <Compile Include="Api\User.cs" />
     <Compile Include="Geopoint.cs" />
     <Compile Include="Net\HttpContentExtensions.cs" />
     <Compile Include="Net\IQueryStringable.cs" />
     <Compile Include="Net\QueryString.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Api\ApiRequest.cs" />
+    <Compile Include="Services\Api\CreatePostRequest.cs" />
+    <Compile Include="Services\Api\CreatePostResponse.cs" />
+    <Compile Include="Services\Api\IApiResponse.cs" />
+    <Compile Include="Services\Api\ListPostsRequest.cs" />
+    <Compile Include="Services\Api\ListPostsResponse.cs" />
+    <Compile Include="Services\PostCollection.cs" />
+    <Compile Include="Services\Api\StaytmentClient.cs" />
+    <Compile Include="Services\Post.cs" />
+    <Compile Include="Services\User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
