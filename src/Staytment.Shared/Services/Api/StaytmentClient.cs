@@ -27,24 +27,29 @@ namespace Staytment.Shared.Services.Api
 
         public async Task<PostCollection> GetPosts(Geopoint position, int maxDistance)
         {
-            // TODO: Specify return type
-            using (var req = new ListPostsRequest(ApiKey))
+            using (var req = new ByPointListPostsRequest())
                 return await GetPostsInternal(req.GetResponse(position, maxDistance));
         }
         public async Task<PostCollection> GetPosts(Geopoint position, int maxDistance, int limit)
         {
-            // TODO: Specify return type
-            using (var req = new ListPostsRequest(ApiKey))
+            using (var req = new ByPointListPostsRequest())
                 return await GetPostsInternal(req.GetResponse(position, maxDistance, limit));
         }
 
         private async Task<PostCollection> GetPostsInternal(Task<ListPostsResponse> resultTask)
         {
-            // TODO: Specify return type
             var res = await resultTask;
-            // TODO: process response
-
-            throw new NotImplementedException();
+            return new PostCollection(res);
         }
+
+        public async Task<PostCollection> GetPosts(GeoRectangle rectangle, int limit)
+        {
+            using (var req = new ByRectangleListPostsRequest())
+            {
+                var res = await req.GetResponse(rectangle, limit);
+                return new PostCollection(res);
+            }
+        }
+
     }
 }

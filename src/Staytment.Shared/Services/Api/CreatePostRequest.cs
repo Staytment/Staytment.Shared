@@ -25,7 +25,7 @@ namespace Staytment.Shared.Services.Api
         {
             if (position == null)
                 throw new ArgumentNullException("position");
-            if (string.IsNullOrEmpty(content)) // TODO: Message.IsValidContent?
+            if (string.IsNullOrEmpty(content)) // TODO: Content.IsValidContent?
                 throw new ArgumentNullException("content");
 
             var data = new CreatePostRequestData(position, content);
@@ -47,7 +47,7 @@ namespace Staytment.Shared.Services.Api
             public CreatePostRequestData(Geopoint position, string content)
             {
                 Debug.Assert(position != null);
-                Debug.Assert(!string.IsNullOrEmpty(content)); // TODO: Message.IsValidContent?
+                Debug.Assert(!string.IsNullOrEmpty(content)); // TODO: Content.IsValidContent?
 
                 message = content;
                 coordinates = new[] { position.Position.Longitude, position.Position.Latitude };

@@ -78,8 +78,9 @@ namespace Staytment.Shared.Net
                 {
                     sb.Append('=').Append(parameter.Value);
                 }
+                sb.Append('&');
             }
-            return sb.ToString();
+            return sb.ToString().TrimEnd('&');
         }
 
         public QueryString ToQueryString()
