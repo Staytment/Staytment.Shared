@@ -1,5 +1,6 @@
 ﻿using System.Device.Location;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using Windows.Devices.Geolocation;
 using Microsoft.Maps.MapControl.WPF;
@@ -37,13 +38,15 @@ namespace Staytment.Shared.Demo
             // cl.GetPosts(new Geopoint(new GeoCoordinate(51, 9.5)), 25000);
 
             _viewModel.CurrentPosts = nearbyPosts;
+            var template = (ControlTemplate)this.FindResource("CutomPushpinTemplate");
 
             foreach (var post in nearbyPosts)
             {
                 var p = new Pushpin
                 {
                     Location = new Location(post.Location.Position.Latitude, post.Location.Position.Longitude),
-                    Content = post.Content
+                    Content = post.Content,
+                    Template = template
                 };
                 lolMap.Children.Add(p);
             }

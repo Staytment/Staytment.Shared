@@ -7,6 +7,23 @@
     <Window.DataContext>
         <viewModels:MainViewModel />
     </Window.DataContext>
+    <Window.Resources>
+        <ControlTemplate x:Key="CutomPushpinTemplate" TargetType="m:Pushpin">
+            <Grid x:Name="ContentGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid Margin="0">
+                    <Border BorderBrush="Black" BorderThickness="2" Background="Black">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        Margin="0" TextBlock.FontFamily="Segoe UI"
+                                        TextBlock.FontWeight="Bold" TextBlock.Foreground="#FFF"/>
+                    </Border>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+
+    </Window.Resources>
     <Grid Margin="10">
         <DockPanel>
             <Button Content="Create Post"
