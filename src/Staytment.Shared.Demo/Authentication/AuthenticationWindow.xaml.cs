@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using System.Windows;
 using Staytment.Shared.Demo.ViewModels;
 using Staytment.Shared.Services.Api;
 
@@ -20,7 +21,7 @@ namespace Staytment.Shared.Demo.Authentication
 //            dc.Url = _authenticator.AuthUrl;
             dc.Title = "Authentication using " + _authenticator.DisplayName;
 
-            authBrowser.Navigated += authBrowser_Navigated;
+            authBrowser.NavigationService.Navigated += authBrowser_Navigated;
             authBrowser.NavigationService.Navigate(new Uri(_authenticator.AuthUrl));
         }
 

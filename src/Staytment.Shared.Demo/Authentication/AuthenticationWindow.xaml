@@ -2,11 +2,11 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:Staytment.Shared.Demo.ViewModels"
-        Title="{Binding Title}" Height="500" Width="600">
+        Title="{Binding Title}" Height="600" Width="650">
     <Window.DataContext>
         <viewModels:BrowserModel/>
     </Window.DataContext>
     <Grid>
-        <Frame Name="authBrowser"/>
+        <Frame Name="authBrowser" />
     </Grid>
 </Window>
