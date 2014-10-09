@@ -1,4 +1,4 @@
-﻿<Window x:Class="Staytment.Shared.Demo.BrowserWindow"
+﻿<Window x:Class="Staytment.Shared.Demo.Authentication.AuthenticationWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:Staytment.Shared.Demo.ViewModels"
@@ -7,6 +7,6 @@
         <viewModels:BrowserModel/>
     </Window.DataContext>
     <Grid>
-        <WebBrowser Source="{Binding Url}" />
+        <Frame Name="authBrowser"/>
     </Grid>
 </Window>

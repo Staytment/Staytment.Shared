@@ -3,26 +3,23 @@ using System.Threading.Tasks;
 
 namespace Staytment.Shared.Demo.Authentication
 {
-    abstract class Auth
+    public abstract class Auth
     {
-        protected abstract string AuthUrl { get; }
+        public abstract string AuthUrl { get; }
+        public abstract string DisplayName { get; }
+        public abstract string CallbackAbsolutePath { get; }
 
-        public Task<string> RequestToken()
+        public async Task<string> RequestToken()
         {
-            var url = AuthUrl;
+            var wnd = new AuthenticationWindow(this);
 
-            var wnd = new BrowserWindow("Staytment Authentication", url);
-
-            var success = wnd.ShowDialog();
-            if (success == true)
+            var access = await wnd.CreateAccessByUserAsync();
+            if (access != null)
             {
 
                 throw new NotImplementedException();
             }
-            else
-            {
-                return Task.FromResult<string>(null);
-            }
+            return null;
         }
     }
 }

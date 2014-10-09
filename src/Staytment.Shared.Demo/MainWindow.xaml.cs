@@ -7,12 +7,14 @@ using Microsoft.Maps.MapControl.WPF;
 using Staytment.Shared.Demo.ViewModels;
 using Staytment.Shared.Services.Api;
 
+using Settings = Staytment.Shared.Demo.Properties.Settings;
+
 namespace Staytment.Shared.Demo
 {
     /// <summary>Interaction logic for MainWindow.xaml</summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        private const string ApiKey = "<api-key>";
+        private readonly string _apiKey = Settings.Default.ApiToken;
         private readonly MainViewModel _viewModel;
 
         public MainWindow()
@@ -24,7 +26,7 @@ namespace Staytment.Shared.Demo
 
         private async void Init()
         {
-            var cl = new StaytmentClient(ApiKey);
+            var cl = new StaytmentClient(_apiKey);
 
             var rect = new GeoRectangle
             {

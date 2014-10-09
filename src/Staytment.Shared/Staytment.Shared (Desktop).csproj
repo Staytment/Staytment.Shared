@@ -58,6 +58,7 @@
     <Compile Include="Services\Api\ListPostsResponse.cs" />
     <Compile Include="Services\Api\Properties.cs" />
     <Compile Include="Services\Api\User.cs" />
+    <Compile Include="Services\Api\UserAccess.cs" />
     <Compile Include="Services\PostCollection.cs" />
     <Compile Include="Services\Api\StaytmentClient.cs" />
     <Compile Include="Services\Post.cs" />
