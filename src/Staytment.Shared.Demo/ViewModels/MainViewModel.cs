@@ -44,13 +44,11 @@ namespace Staytment.Shared.Demo.ViewModels
             var cl = Client;
             var rect = new GeoRectangle
             {
-                A = new Geopoint(new GeoCoordinate(51.169872159530186, 9.408416748046875)),
-                B = new Geopoint(new GeoCoordinate(51.35120063065598, 9.408416748046875)),
-                C = new Geopoint(new GeoCoordinate(51.35120063065598, 9.652862548828125)),
-                D = new Geopoint(new GeoCoordinate(51.169872159530186, 9.652862548828125))
+                TopLeft = new Geopoint(new GeoCoordinate(51.169872159530186, 9.408416748046875)),
+                BottomRight = new Geopoint(new GeoCoordinate(51.169872159530186, 9.652862548828125))
             };
 
-            CurrentPosts = await cl.GetPosts(rect, 25);
+            CurrentPosts = await cl.GetPosts(rect, 3, 4, 25);
         }
     }
 }
