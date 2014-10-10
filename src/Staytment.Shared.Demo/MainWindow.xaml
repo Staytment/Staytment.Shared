@@ -28,8 +28,11 @@
         <DockPanel>
             <Button Content="Create Post"
                     Command="{Binding CreatePost}"
+                    Margin="10, 10, 10, 5"
                     DockPanel.Dock="Top" />
-            <m:Map Name="lolMap" CredentialsProvider="Ak_ajwffa6TBgzqzFklyh6ERlqHjJVB87PUnLeltcjFVQV74rNzqJNJPAfJYRKtZ">
+            <m:Map Name="lolMap"
+                   Margin="0, 5, 0, 0"
+                   CredentialsProvider="Ak_ajwffa6TBgzqzFklyh6ERlqHjJVB87PUnLeltcjFVQV74rNzqJNJPAfJYRKtZ">
             </m:Map>
         </DockPanel>
     </Grid>

@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
-using Windows.Devices.Geolocation;
 using Staytment.Shared.Net;
 
 namespace Staytment.Shared.Services.Api

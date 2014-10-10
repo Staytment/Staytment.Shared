@@ -27,7 +27,8 @@ namespace Staytment.Shared.Net
         public QueryString(string uri)
             : this()
         {
-            Append(uri);
+            if(uri.Contains("&") || uri.Contains("?"))
+                Append(uri);
         }
 
         internal void Append(string uri)
@@ -70,13 +71,14 @@ namespace Staytment.Shared.Net
         public override string ToString()
         {
             // TODO: URLENCODE(!!)
+            // TODO: Test for Uri.EscapeDataString()
             var sb = new StringBuilder();
             foreach (var parameter in _parameters)
             {
-                sb.Append(parameter.Key);
+                sb.Append(Uri.EscapeDataString(parameter.Key));
                 if (parameter.Value != null)
                 {
-                    sb.Append('=').Append(parameter.Value);
+                    sb.Append('=').Append(Uri.EscapeDataString(parameter.Value));
                 }
                 sb.Append('&');
             }

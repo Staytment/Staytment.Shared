@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Staytment.Shared.Net;
@@ -56,6 +57,8 @@ namespace Staytment.Shared.Services.Api
         protected async Task<T> PostAsync(Uri requestUri, HttpContent content)
         {
             requestUri = CheckApiKey(requestUri);
+            Debug.WriteLine("Post: " + requestUri);
+
             var response = await _client.PostAsync(requestUri, content);
 
             if (response.Content == null)
@@ -68,7 +71,7 @@ namespace Staytment.Shared.Services.Api
         protected Task<T> PostAsync(Uri requestUri, object content)
         {
             var json = JsonConvert.SerializeObject(content);
-            var str = new StringContent(json);
+            var str = new StringContent(json, Encoding.UTF8, "application/json");
             return PostAsync(requestUri, str);
         }
 
@@ -95,18 +98,19 @@ namespace Staytment.Shared.Services.Api
         {
             if (uri == null)
                 return null;
+            const string apiKeyParam = "api_key";
 
             var query = new QueryString(uri);
 
             if (string.IsNullOrEmpty(_apiKey))
             {
                 // Strip api key if class user put one into the url
-                if (query.ContainsKey("apikey"))
-                    query.Remove("apikey");
+                if (query.ContainsKey(apiKeyParam))
+                    query.Remove(apiKeyParam);
             }
             else
             {
-                query["apikey"] = _apiKey;
+                query[apiKeyParam] = _apiKey;
             }
 
             return uri.SetQuery(query);

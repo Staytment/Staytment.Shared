@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
+using Newtonsoft.Json;
 
 namespace Staytment.Shared.Services.Api
 {
@@ -10,7 +13,7 @@ namespace Staytment.Shared.Services.Api
     // TODO: May rename classes to have HTTP options as prefix. Eg. "PostPostsRequest", "GetPostsRequest"
     public class CreatePostRequest : ApiRequest<CreatePostResponse>
     {
-        protected const string ApiUrl = ApiBaseUrl + "/posts";
+        protected const string ApiUrl = ApiBaseUrl + "/posts/";
 
         protected const int MinLimit = 1;
         protected const int MaxLimit = 25;
@@ -32,17 +35,26 @@ namespace Staytment.Shared.Services.Api
 
             var requestUri = CreateUri(ApiUrl, null);
 
+            // Documentation is wrong here, just dump the json into the request body
+            /*
+            var dataJson = data.ToJson();
+            var cnt = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("post", dataJson)
+            });
+            */
+            
             return PostAsync(requestUri, data);
         }
 
-        private struct CreatePostRequestData // Not QueryStringable since it is JSON in the post body
+        private struct CreatePostRequestData
         {
             // This struct is only for serialization, so no getter/setter needed. May change later.
             // TODO: Also: Find solution for correct casing since JSON.NET ignores [DataMember(Name)] when serializing.
             [DataMember(Name = "message")]
-            internal string message;
+            public string message;
             [DataMember(Name = "coordinates")]
-            internal double[] coordinates;
+            public double[] coordinates;
 
             public CreatePostRequestData(Geopoint position, string content)
             {
@@ -51,6 +63,11 @@ namespace Staytment.Shared.Services.Api
 
                 message = content;
                 coordinates = new[] { position.Position.Longitude, position.Position.Latitude };
+            }
+
+            public string ToJson()
+            {
+                return JsonConvert.SerializeObject(this);
             }
         }
     }

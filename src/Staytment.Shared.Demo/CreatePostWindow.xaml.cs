@@ -19,6 +19,7 @@ namespace Staytment.Shared.Demo
 
         public Task<bool?> ShowDialogAsync()
         {
+            Show();
             return _tcs.Task;
         }
 

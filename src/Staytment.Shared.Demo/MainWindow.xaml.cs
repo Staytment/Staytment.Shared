@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Maps.MapControl.WPF;
 using Staytment.Shared.Demo.ViewModels;
@@ -10,7 +9,6 @@ namespace Staytment.Shared.Demo
     /// <summary>Interaction logic for MainWindow.xaml</summary>
     public partial class MainWindow
     {
-        private const string ApiKey = "<api-key>";
         private readonly MainViewModel _viewModel;
 
         public MainWindow()
@@ -18,7 +16,6 @@ namespace Staytment.Shared.Demo
             InitializeComponent();
             _viewModel = DataContext as MainViewModel;
             Debug.Assert(_viewModel != null);
-            _viewModel.Client = new StaytmentClient(ApiKey);
             Initialize();
         }
 
