@@ -28,13 +28,11 @@ namespace Staytment.Shared.Demo
 
             var rect = new GeoRectangle
             {
-                A = new Geopoint(new GeoCoordinate(51.169872159530186, 9.408416748046875)),
-                B = new Geopoint(new GeoCoordinate(51.35120063065598, 9.408416748046875)),
-                C = new Geopoint(new GeoCoordinate(51.35120063065598, 9.652862548828125)),
-                D = new Geopoint(new GeoCoordinate(51.169872159530186, 9.652862548828125))
+                TopLeft = new Geopoint(new GeoCoordinate(51.169872159530186, 9.408416748046875)),
+                BottomRight = new Geopoint(new GeoCoordinate(51.169872159530186, 9.652862548828125))
             };
 
-            var nearbyPosts = await cl.GetPosts(rect, 25);
+            var nearbyPosts = await cl.GetPosts(rect, 50, 50, 25);
             // cl.GetPosts(new Geopoint(new GeoCoordinate(51, 9.5)), 25000);
 
             _viewModel.CurrentPosts = nearbyPosts;
@@ -50,22 +48,6 @@ namespace Staytment.Shared.Demo
                 };
                 lolMap.Children.Add(p);
             }
-
-            var l = new LocationCollection
-            {
-                new Location(rect.A.Position.Latitude, rect.A.Position.Longitude),
-                new Location(rect.B.Position.Latitude, rect.B.Position.Longitude),
-                new Location(rect.C.Position.Latitude, rect.C.Position.Longitude),
-                new Location(rect.D.Position.Latitude, rect.D.Position.Longitude),
-                new Location(rect.A.Position.Latitude, rect.A.Position.Longitude)
-            };
-
-            lolMap.Children.Add(new MapPolyline
-            {
-                Locations = l,
-                Stroke = Brushes.Red,
-                StrokeThickness = 2.0
-            });
         }
     }
 }

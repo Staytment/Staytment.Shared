@@ -15,19 +15,19 @@ namespace Staytment.Shared.Services.Api
             : base(null)
         { }
 
-        public Task<ListPostsResponse> GetResponse(GeoRectangle rectangle, Geopoint point3)
+        public Task<ListPostsResponse> GetResponse(GeoRectangle rectangle, int horizontalResolution, int verticalResolution)
         {
-            return GetResponse(rectangle, DefaultLimit);
+            return GetResponse(rectangle, horizontalResolution, verticalResolution, DefaultLimit);
         }
 
-        public Task<ListPostsResponse> GetResponse(GeoRectangle rectangle, int limit)
+        public Task<ListPostsResponse> GetResponse(GeoRectangle rectangle, int horizontalResolution, int verticalResolution, int limit)
         {
             if (rectangle == null)
                 throw new ArgumentNullException("rectangle");
 
             limit = Math.Min(MaxLimit, Math.Max(MinLimit, limit)); // Clamp limit to 1-25
 
-            var data = new ByPointListRequestData(rectangle, limit);
+            var data = new ByPointListRequestData(rectangle, horizontalResolution, verticalResolution, limit);
 
             var requestUri = CreateUri(ApiUrl2, data);
 
@@ -43,25 +43,20 @@ namespace Staytment.Shared.Services.Api
             internal double long1;
             internal double lat2;
             internal double long2;
-            internal double lat3;
-            internal double long3;
-            internal double lat4;
-            internal double long4;
+            internal int vertical_resolution;
+            internal int horizontal_resolution;
             internal int limit;
 
-            public ByPointListRequestData(GeoRectangle rectangle, int limit)
+            public ByPointListRequestData(GeoRectangle rectangle, int horizontalResolution, int verticalResolution, int limit)
             {
                 Debug.Assert(limit >= 0);
 
-                lat1 = rectangle.A.Position.Latitude;
-                long1 = rectangle.A.Position.Longitude;
-                lat2 = rectangle.B.Position.Latitude;
-                long2 = rectangle.B.Position.Longitude;
-                lat3 = rectangle.C.Position.Latitude;
-                long3 = rectangle.C.Position.Longitude;
-                lat4 = rectangle.D.Position.Latitude;
-                long4 = rectangle.D.Position.Longitude;
-
+                lat1 = rectangle.TopLeft.Position.Latitude;
+                long1 = rectangle.TopLeft.Position.Longitude;
+                lat2 = rectangle.BottomRight.Position.Latitude;
+                long2 = rectangle.BottomRight.Position.Longitude;
+                vertical_resolution = verticalResolution;
+                horizontal_resolution = horizontalResolution;
                 this.limit = limit;
             }
 
@@ -73,11 +68,9 @@ namespace Staytment.Shared.Services.Api
                 qs["long1"] = long1.ToString("F", CultureInfo.InvariantCulture);
                 qs["lat2"] = lat2.ToString("F", CultureInfo.InvariantCulture);
                 qs["long2"] = long2.ToString("F", CultureInfo.InvariantCulture);
-                qs["lat3"] = lat3.ToString("F", CultureInfo.InvariantCulture);
-                qs["long3"] = long3.ToString("F", CultureInfo.InvariantCulture);
-                qs["lat4"] = lat4.ToString("F", CultureInfo.InvariantCulture);
-                qs["long4"] = long4.ToString("F", CultureInfo.InvariantCulture);
-                qs["limit"] = limit.ToString();
+                qs["vertical_resolution"] = vertical_resolution.ToString(CultureInfo.InvariantCulture);
+                qs["horizontal_resolution"] = horizontal_resolution.ToString(CultureInfo.InvariantCulture);
+                qs["limit"] = limit.ToString(CultureInfo.InvariantCulture);
                 return qs;
             }
         }
