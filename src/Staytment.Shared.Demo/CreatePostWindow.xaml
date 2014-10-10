@@ -2,8 +2,10 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:Staytment.Shared.Demo.ViewModels"
-        Title="Create Post" Height="300" Width="300"
+        Title="Create Post" Height="200" Width="550"
+        WindowStartupLocation="CenterScreen"
         TextOptions.TextFormattingMode="Display"
+        FocusManager.FocusedElement="{Binding ElementName=MessageTextBox}"
         TextOptions.TextRenderingMode="ClearType"
         x:ClassModifier="internal">
     <Window.DataContext>
