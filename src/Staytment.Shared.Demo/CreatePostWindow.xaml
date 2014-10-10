@@ -15,7 +15,7 @@
         <Label DockPanel.Dock="Top"
                Target="{Binding ElementName=MessageTextBox}"
                Content="_Message:" Margin="10, 10, 10, 5" />
-        <TextBox Text="{Binding Message}" Name="MessageTextBox"
+        <TextBox Text="{Binding Content}" Name="MessageTextBox"
                  Margin="10, 0, 10, 5"/>
     </DockPanel>
 </Window>

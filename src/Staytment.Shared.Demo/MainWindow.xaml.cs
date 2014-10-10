@@ -1,9 +1,6 @@
-﻿using System.Device.Location;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using Windows.Devices.Geolocation;
 using Microsoft.Maps.MapControl.WPF;
 using Staytment.Shared.Demo.ViewModels;
 using Staytment.Shared.Services.Api;
@@ -11,7 +8,7 @@ using Staytment.Shared.Services.Api;
 namespace Staytment.Shared.Demo
 {
     /// <summary>Interaction logic for MainWindow.xaml</summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         private const string ApiKey = "<api-key>";
         private readonly MainViewModel _viewModel;

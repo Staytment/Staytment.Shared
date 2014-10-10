@@ -4,15 +4,15 @@ namespace Staytment.Shared.Demo.ViewModels
 {
     internal class PostDataModel : ViewModel
     {
-        private string _message;
-        public string Message
+        private string _content;
+        public string Content
         {
-            get { return _message; }
+            get { return _content; }
             set
             {
-                if (_message != value)
+                if (_content != value)
                 {
-                    _message = value;
+                    _content = value;
                     OnPropertyChanged();
                 }
             }

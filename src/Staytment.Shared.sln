@@ -4,11 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Staytment.Shared", "Staytment.Shared\Staytment.Shared.csproj", "{16232BDC-E51A-40E0-95AF-5595394B440E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F2B1FBF3-623E-447E-8571-D91C2F736BB1} = {F2B1FBF3-623E-447E-8571-D91C2F736BB1}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Staytment.Shared (Desktop)", "Staytment.Shared\Staytment.Shared (Desktop).csproj", "{DDF50F36-1B27-4031-8229-029F00331684}"
-	ProjectSection(ProjectDependencies) = postProject
-		{16232BDC-E51A-40E0-95AF-5595394B440E} = {16232BDC-E51A-40E0-95AF-5595394B440E}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Staytment.Shared.Demo", "Staytment.Shared.Demo\Staytment.Shared.Demo.csproj", "{F2B1FBF3-623E-447E-8571-D91C2F736BB1}"
 EndProject

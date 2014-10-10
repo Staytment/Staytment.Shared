@@ -32,11 +32,12 @@ namespace Staytment.Shared.Demo.ViewModels
 
         public MainViewModel()
         {
-            CreatePost = new CreatePostCommand();
         }
 
         internal async Task Initialize()
         {
+            CreatePost = new CreatePostCommand(this);
+
             if (Client == null)
                 return;
 

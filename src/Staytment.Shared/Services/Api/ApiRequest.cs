@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -35,6 +36,7 @@ namespace Staytment.Shared.Services.Api
         protected async Task<T> GetAsync(Uri requestUri)
         {
             requestUri = CheckApiKey(requestUri);
+            Debug.WriteLine("Get: " + requestUri);
             var response = await _client.GetAsync(requestUri);
 
             if (response.Content == null)
