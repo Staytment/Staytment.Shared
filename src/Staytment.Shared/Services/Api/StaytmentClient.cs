@@ -8,11 +8,11 @@ namespace Staytment.Shared.Services.Api
     {
         public string ApiKey { get; set; }
 
-#if DEBUG
+// #if DEBUG
         private const string StaticApiKey = "thetestuserapikey";
-#else
-        private static readonly string StaticApiKey = Staytment.Properties.Settings.Default.ApiToken;
-#endif
+// #else
+//        private static readonly string StaticApiKey = Staytment.Shared.Properties.Settings.Default.ApiToken;
+// #endif
         public StaytmentClient()
             : this(StaticApiKey)
         { }
