@@ -59,8 +59,17 @@
     </ApplicationDefinition>
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CreatePostCommand.cs" />
+    <Compile Include="CreatePostWindow.xaml.cs">
+      <DependentUpon>CreatePostWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PostCreator.cs" />
+    <Compile Include="ViewModels\PostDataModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
+    <Page Include="CreatePostWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

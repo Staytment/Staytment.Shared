@@ -1,4 +1,5 @@
 ﻿using System.Device.Location;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -19,28 +20,16 @@ namespace Staytment.Shared.Demo
         {
             InitializeComponent();
             _viewModel = DataContext as MainViewModel;
-            Init();
+            Debug.Assert(_viewModel != null);
+            _viewModel.Client = new StaytmentClient(ApiKey);
+            Initialize();
         }
 
-        private async void Init()
+        private async void Initialize()
         {
-            var cl = new StaytmentClient(ApiKey);
-
-            var rect = new GeoRectangle
-            {
-                A = new Geopoint(new GeoCoordinate(51.169872159530186, 9.408416748046875)),
-                B = new Geopoint(new GeoCoordinate(51.35120063065598, 9.408416748046875)),
-                C = new Geopoint(new GeoCoordinate(51.35120063065598, 9.652862548828125)),
-                D = new Geopoint(new GeoCoordinate(51.169872159530186, 9.652862548828125))
-            };
-
-            var nearbyPosts = await cl.GetPosts(rect, 25);
-            // cl.GetPosts(new Geopoint(new GeoCoordinate(51, 9.5)), 25000);
-
-            _viewModel.CurrentPosts = nearbyPosts;
-            var template = (ControlTemplate)this.FindResource("CutomPushpinTemplate");
-
-            foreach (var post in nearbyPosts)
+            await _viewModel.Initialize();
+            var template = (ControlTemplate)FindResource("CutomPushpinTemplate");
+            foreach (var post in _viewModel.CurrentPosts)
             {
                 var p = new Pushpin
                 {
@@ -50,22 +39,6 @@ namespace Staytment.Shared.Demo
                 };
                 lolMap.Children.Add(p);
             }
-
-            var l = new LocationCollection
-            {
-                new Location(rect.A.Position.Latitude, rect.A.Position.Longitude),
-                new Location(rect.B.Position.Latitude, rect.B.Position.Longitude),
-                new Location(rect.C.Position.Latitude, rect.C.Position.Longitude),
-                new Location(rect.D.Position.Latitude, rect.D.Position.Longitude),
-                new Location(rect.A.Position.Latitude, rect.A.Position.Longitude)
-            };
-
-            lolMap.Children.Add(new MapPolyline
-            {
-                Locations = l,
-                Stroke = Brushes.Red,
-                StrokeThickness = 2.0
-            });
         }
     }
 }

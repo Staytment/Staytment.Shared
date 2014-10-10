@@ -6,12 +6,16 @@ namespace Staytment.Shared.Demo.Commands
     {
         public override bool CanExecute(object parameter)
         {
-            return false; // TODO: Implement
+            return true; // TODO: Implement
         }
 
-        public override void Execute(object parameter)
+        public async override void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            var postData = await PostCreator.CreatePostByUserAsync();
+            if (postData != null)
+            {
+                
+            }
         }
     }
 }
