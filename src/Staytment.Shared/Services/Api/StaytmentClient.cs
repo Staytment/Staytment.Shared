@@ -42,11 +42,11 @@ namespace Staytment.Shared.Services.Api
             return new PostCollection(res);
         }
 
-        public async Task<PostCollection> GetPosts(GeoRectangle rectangle, int limit)
+        public async Task<PostCollection> GetPosts(GeoRectangle rectangle, int horizontalResolution, int verticalResolution, int limit)
         {
             using (var req = new ByRectangleListPostsRequest())
             {
-                var res = await req.GetResponse(rectangle, limit);
+                var res = await req.GetResponse(rectangle, horizontalResolution, verticalResolution, limit);
                 return new PostCollection(res);
             }
         }
