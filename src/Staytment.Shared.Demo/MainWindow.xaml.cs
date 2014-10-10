@@ -21,7 +21,8 @@ namespace Staytment.Shared.Demo
 
         private async void Initialize()
         {
-            await _viewModel.Initialize();
+            //await _viewModel.Initialize();
+            _viewModel.Initialize();
             var template = (ControlTemplate)FindResource("CutomPushpinTemplate");
             foreach (var post in _viewModel.CurrentPosts)
             {
